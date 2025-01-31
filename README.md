@@ -1,21 +1,76 @@
-# **Task 2 - Exploratory Data Analysis (EDA)**
+# **Task 1 & Task 2 - Data Scraping, Cleaning, and Storage**
 
-This repository contains the code and steps for conducting **Exploratory Data Analysis (EDA)** as part of the 10 Academy AI Mastery Challenge. The analysis focuses on understanding the dataset, identifying patterns, and preparing data for feature engineering and modeling.
+## **Task 1: Data Scraping**
+### **Objective:**
+Scrape relevant data from Telegram channels related to Ethiopian medical businesses.
+
+### **Steps Taken:**
+1. **Set Up Telegram API Access**
+   - Registered a Telegram app to get `api_id` and `api_hash`.
+   - Used `Pyrogram` for data extraction.
+
+2. **Scraped Messages from Public Telegram Channels**
+   - Extracted text, sender, timestamp, and channel name.
+   - Saved raw data in `raw_tg_data.csv`.
+
+3. **Extracted Images for Object Detection**
+   - Downloaded media files from Telegram messages.
+   - Stored images for further YOLO processing.
+
+### **Technologies Used:**
+- `Pyrogram` for Telegram scraping.
+- `pandas` for data handling.
+- `logging` for tracking progress.
 
 ---
 
-## **Steps for EDA**
+## **Task 2: Data Cleaning & Transformation**
+### **Objective:**
+Clean and transform the scraped data for structured storage.
 
-### **1. Dataset Overview**
+### **Cleaning Steps:**
+1. **Removed Duplicates**
+   - Dropped duplicate messages based on timestamp & text.
 
-Load the dataset and inspect its structure:
-```python
-import pandas as pd
+2. **Handled Missing Values**
+   - Filled missing senders with `Unknown Sender`.
+   - Replaced empty messages with `No Message`.
 
-# Load the dataset
-data = pd.read_csv('path_to_dataset.csv')
+3. **Standardized Text Data**
+   - Removed emojis and unnecessary spaces.
+   - Extracted and removed links from messages.
 
-# Display dataset details
-print("Dataset Shape:", data.shape)
-print(data.info())
-print(data.head())
+4. **Stored Cleaned Data in PostgreSQL**
+   - Created a `messages` table with structured columns.
+   - Inserted cleaned data into PostgreSQL.
+
+### **Technologies Used:**
+- `pandas` for text processing.
+- `psycopg2` for database integration.
+- `regex` for text standardization.
+
+---
+
+## **How to Run the Scripts**
+### **1️⃣ Run Data Scraping:**
+```bash
+python scripts/tg_scraper.py
+```
+
+### **2️⃣ Run Data Cleaning & Storage:**
+```bash
+python scripts/db_insert.py
+```
+
+### **3️⃣ Verify Data in PostgreSQL:**
+```sql
+SELECT * FROM messages LIMIT 10;
+```
+
+---
+
+## **Next Steps**
+✅ **Prepare YOLO for object detection on images.**  
+✅ **Develop a FastAPI backend to expose the data via APIs.**
+
+Let me know if you need any modifications! 🚀
