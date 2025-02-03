@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: public
+    tables:
+      - name: messages
+        description: "Raw messages scraped from Telegram"
+
+models:
+  - name: cleaned_telegram_data
+    description: "Cleaned version of the messages table"
+    columns:
+      - name: id
+        description: "Primary key for messages"
+        tests:
+          - unique
+          - not_null
+      - name: message_text
+        description: "Text of the message"
+        tests:
+          - not_null
+      - name: message_timestamp
+        description: "Time when the message was sent"

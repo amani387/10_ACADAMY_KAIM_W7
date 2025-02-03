@@ -1,0 +1,4 @@
+dbtvenv/
+target/
+dbt_packages/
+logs/
