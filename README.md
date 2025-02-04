@@ -1,21 +1,18 @@
-# **Task 2 - Exploratory Data Analysis (EDA)**
+# YOLOv5 Object Detection Task
 
-This repository contains the code and steps for conducting **Exploratory Data Analysis (EDA)** as part of the 10 Academy AI Mastery Challenge. The analysis focuses on understanding the dataset, identifying patterns, and preparing data for feature engineering and modeling.
+This repository contains a Python implementation of object detection using the YOLOv5 model from the Ultralytics repository. It demonstrates how to run object detection on images and save the results in a specified directory.
 
----
+## Prerequisites
 
-## **Steps for EDA**
+To run this project, you need to have the following installed:
 
-### **1. Dataset Overview**
+- Python 3.8 or higher
+- PyTorch 1.7.0 or higher
+- OpenCV 4.5.1 or higher
 
-Load the dataset and inspect its structure:
-```python
-import pandas as pd
+### Install Dependencies
 
-# Load the dataset
-data = pd.read_csv('path_to_dataset.csv')
-
-# Display dataset details
-print("Dataset Shape:", data.shape)
-print(data.info())
-print(data.head())
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/amani387/yolov5-object-detection.git
+   cd yolov5-object-detection
